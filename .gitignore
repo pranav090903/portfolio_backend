@@ -1,0 +1,11 @@
+# Ignore both node_modules
+**/node_modules/
+
+# Ignore backend .env
+backend/.env
+
+# Ignore root .env just in case
+.env
+
+# Vite build output
+frontend/dist/
