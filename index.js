@@ -9,10 +9,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: "https://portfolio-edpu.vercel.app",
-  methods: ["POST"],
-  credentials: true
+  origin: ["https://portfolio-edpu.vercel.app"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
 }));
+
 app.use(express.json());
 
 // Contact form route
