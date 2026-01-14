@@ -9,13 +9,18 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: "https://portfolio-edpu.vercel.app", // your frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: false
+  origin: "https://portfolio-edpu.vercel.app",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
 }));
 
-// Preflight support for all routes
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://portfolio-edpu.vercel.app");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  next();
+});
+
 app.options("*", cors());
 
 
